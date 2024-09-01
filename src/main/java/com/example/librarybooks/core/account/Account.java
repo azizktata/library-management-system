@@ -1,6 +1,9 @@
 package com.example.librarybooks.core.account;
 
+import com.example.librarybooks.core.bookItem.BookItem;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -15,6 +18,8 @@ public class Account {
     private String name;
     private String email;
     private String phone;
+    @OneToMany
+    private List<BookItem> borrowedBooks;
 
 
     public Account() {

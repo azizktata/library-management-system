@@ -1,10 +1,12 @@
 package com.example.librarybooks.core.bookItem;
 
+import com.example.librarybooks.core.account.Account;
 import com.example.librarybooks.core.book.Book;
 import com.example.librarybooks.core.enums.BookStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 import java.util.Date;
 
@@ -17,6 +19,9 @@ public class BookItem extends Book {
     private Long price;
     private Date publicationDate;
     private BookStatus status;
+
+    @ManyToOne
+    private Account borrower;
 
 
     public String getBarcode() {

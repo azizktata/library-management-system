@@ -1,33 +1,30 @@
-package com.example.librarybooks.core.book;
+package com.example.librarybooks.core.book.web;
 
-import com.example.librarybooks.core.author.Author;
-import jakarta.persistence.*;
+import com.example.librarybooks.core.author.web.AuthorBaseReq;
+import jakarta.persistence.Id;
+import org.springframework.lang.NonNull;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Book {
+public class BookBaseReq {
+
     @Id
-    @Column(name = "isbn", nullable = false)
+    @NotEmpty
     private String isbn;
 
+    @NotEmpty
     private String title;
 
     private String subject;
 
+    @NotEmpty
     private String language;
 
     private int numberOfPages;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    @JoinTable(name = "book_author",
-            joinColumns = { @JoinColumn(name = "id_book") },
-            inverseJoinColumns = { @JoinColumn(name = "id_author") })
-    private List<Author> writtenBy;
-
-    public Book() {
-    }
+    @NotEmpty
+    private List<AuthorBaseReq> authorReqs;
 
     public String getIsbn() {
         return isbn;
@@ -36,6 +33,7 @@ public class Book {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
     public String getTitle() {
         return title;
     }
@@ -68,11 +66,11 @@ public class Book {
         this.numberOfPages = numberOfPages;
     }
 
-    public List<Author> getWrittenBy() {
-        return writtenBy;
+    public List<AuthorBaseReq> getAuthorReqs() {
+        return authorReqs;
     }
 
-    public void setWrittenBy(List<Author> writtenBy) {
-        this.writtenBy = writtenBy;
+    public void setAuthorReqs(List<AuthorBaseReq> authorReqs) {
+        this.authorReqs = authorReqs;
     }
 }

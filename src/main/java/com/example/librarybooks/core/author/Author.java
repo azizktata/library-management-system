@@ -1,8 +1,10 @@
 package com.example.librarybooks.core.author;
 
+import com.example.librarybooks.core.book.Book;
 import jakarta.persistence.*;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 public class Author {
@@ -11,12 +13,9 @@ public class Author {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotEmpty
     private String name;
 
-    @NotEmpty
     private String description;
-
 
 
     public Long getId() {
@@ -42,4 +41,5 @@ public class Author {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
