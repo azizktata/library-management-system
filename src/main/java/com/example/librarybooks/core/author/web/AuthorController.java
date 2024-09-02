@@ -23,7 +23,7 @@ public class AuthorController {
     }
 
     @GetMapping("/{id}")
-    public AuthorView getAuthor(@PathVariable Long id) throws EntityNotFoundException {
+    public AuthorView getAuthor(@PathVariable String id) throws EntityNotFoundException {
         return service.getAuthor(id);
     }
 
@@ -40,12 +40,12 @@ public class AuthorController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAuthor(@PathVariable Long id) throws EntityNotFoundException {
+    public void deleteAuthor(@PathVariable String id) throws EntityNotFoundException {
         service.delete(id);
     }
 
     @PutMapping("/{id}")
-    public AuthorView updateAuthor(@PathVariable(name = "id") Long id,
+    public AuthorView updateAuthor(@PathVariable(name = "id") String id,
                                    @RequestBody @Valid AuthorBaseReq req) throws EntityNotFoundException {
         Author author = service.findAuthorOrThrow(id);
         return service.update(author, req);

@@ -1,44 +1,44 @@
 package com.example.librarybooks.core.account.web;
 
-public class AccountView {
+import org.springframework.lang.NonNull;
 
-    private Long id;
+public class AccountBaseReq {
+
+
     private String password;
+
     private String name;
+
     private String email;
+
     private String phone;
-    private String dtype;
 
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    @NonNull
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(@NonNull String password) {
         this.password = password;
     }
 
+    @NonNull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
+    @NonNull
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@NonNull String email) {
         this.email = email;
     }
 
@@ -50,11 +50,5 @@ public class AccountView {
         this.phone = phone;
     }
 
-    public String getDtype() {
-        return dtype;
-    }
 
-    public void setDtype(String dtype) {
-        this.dtype = dtype;
-    }
 }

@@ -1,8 +1,11 @@
 package com.example.librarybooks.core.account.web;
 
 import com.example.librarybooks.core.account.AccountService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.librarybooks.core.member.Member;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/accounts")
@@ -14,5 +17,15 @@ public class AccountController {
         this.service = service;
     }
 
+    @PostMapping("/member")
+    @ResponseStatus(HttpStatus.CREATED)
+    public AccountView addAccountM (@RequestBody @Valid AccountBaseReq req) {
+        return service.createMember(req);
+    }
 
+    @PostMapping("/librarian")
+    @ResponseStatus(HttpStatus.CREATED)
+    public AccountView addAccountL (@RequestBody @Valid AccountBaseReq req) {
+        return service.createLibriarian(req);
+    }
 }

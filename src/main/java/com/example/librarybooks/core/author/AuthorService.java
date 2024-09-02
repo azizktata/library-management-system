@@ -25,12 +25,12 @@ public class AuthorService {
         this.authorToAuthorView = authorToAuthorView;
     }
 
-    public Author findAuthorOrThrow(Long id) throws EntityNotFoundException {
+    public Author findAuthorOrThrow(String id) throws EntityNotFoundException {
         return authorRepo.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("No such author found!"));
     }
 
-    public AuthorView getAuthor(Long id) throws EntityNotFoundException {
+    public AuthorView getAuthor(String id) throws EntityNotFoundException {
         Author author = findAuthorOrThrow(id);
         return authorToAuthorView.convert(author);
     }
@@ -38,6 +38,7 @@ public class AuthorService {
     public AuthorView create(AuthorBaseReq req) {
         Author author = new Author();
         this.prepare(author, req);
+        author.setName(author.getName().toLowerCase());
         Author authorSave = authorRepo.save(author);
         return authorToAuthorView.convert(authorSave);
     }
@@ -53,7 +54,7 @@ public class AuthorService {
     }
 
     @Transactional
-    public void delete(Long id) throws EntityNotFoundException {
+    public void delete(String id) throws EntityNotFoundException {
         try {
             authorRepo.deleteById(id);
         } catch (EmptyResultDataAccessException e) {

@@ -1,35 +1,45 @@
 package com.example.librarybooks.core.account;
 
-import com.example.librarybooks.core.bookItem.BookItem;
+import com.example.librarybooks.core.librarian.Librarian;
+import com.example.librarybooks.core.member.Member;
 import jakarta.persistence.*;
-
-import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="user_type",
-        discriminatorType = DiscriminatorType.INTEGER)
+@DiscriminatorColumn(name="dtype")
 public class Account {
-    @Id
-    @Column(name = "id", nullable = false)
-    private String id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
     private String password;
     private String name;
     private String email;
     private String phone;
-    @OneToMany
-    private List<BookItem> borrowedBooks;
+
+//    @OneToMany
+//    private List<BookItem> borrowedBooks;
 
 
     public Account() {
     }
 
-    public String getId() {
+    @Transient
+    public String getDiscriminatorValue() {
+        if (this instanceof Member) {
+            return "Member";
+        } else if (this instanceof Librarian) {
+            return "Librarian";
+        }
+        return "Unknown";
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

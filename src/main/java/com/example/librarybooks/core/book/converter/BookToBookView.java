@@ -6,10 +6,12 @@ import com.example.librarybooks.core.book.Book;
 import com.example.librarybooks.core.book.web.BookView;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class BookToBookView implements Converter<Book, BookView> {
 
     private final AuthorToAuthorView authorToAuthorViewConverter;
@@ -25,6 +27,7 @@ public class BookToBookView implements Converter<Book, BookView> {
         view.setTitle(book.getTitle());
         view.setSubject(book.getSubject());
         view.setLanguage(book.getLanguage());
+        view.setNumberOfPages(book.getNumberOfPages());
         List<AuthorView> authors = new ArrayList<>();
         book.getWrittenBy().forEach(author -> {
              authors.add(authorToAuthorViewConverter.convert(author));

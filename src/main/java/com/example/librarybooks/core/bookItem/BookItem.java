@@ -13,15 +13,13 @@ import java.util.Date;
 @Entity
 public class BookItem extends Book {
 
-    @Id
-    @Column(name = "barcode", nullable = false)
     private String barcode;
     private Long price;
     private Date publicationDate;
     private BookStatus status;
 
-    @ManyToOne
-    private Account borrower;
+//    @ManyToOne
+//    private Account borrower;
 
 
     public String getBarcode() {

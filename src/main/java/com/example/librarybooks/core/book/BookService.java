@@ -61,7 +61,7 @@ public class BookService {
         Book book = new Book();
         this.prepareBook(book, req);
         Book savedBook = repo.save(book);
-        return bookToBookViewConverter.convert(book);
+        return bookToBookViewConverter.convert(savedBook);
     }
 
     public BookView update (Book book, BookBaseReq req) {

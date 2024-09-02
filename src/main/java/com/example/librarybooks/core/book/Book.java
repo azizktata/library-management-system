@@ -20,7 +20,7 @@ public class Book {
 
     private int numberOfPages;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "book_author",
             joinColumns = { @JoinColumn(name = "id_book") },
             inverseJoinColumns = { @JoinColumn(name = "id_author") })
