@@ -11,7 +11,7 @@ public class AccountToAccountView implements Converter<Account, AccountView> {
     @Override
     public AccountView convert(Account acc) {
         AccountView view = new AccountView();
-        view.setId(acc.getId());
+        view.setId(acc.getAccountId());
         view.setName(acc.getName());
         view.setEmail(acc.getEmail());
         view.setPassword(acc.getPassword());

@@ -1,5 +1,5 @@
 package com.example.librarybooks.core.enums;
 
 public enum BookStatus {
-    Available, Reserved, Lost
+    Available, Reserved, Loaned, Lost
 }

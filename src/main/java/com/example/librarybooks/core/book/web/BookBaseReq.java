@@ -13,7 +13,6 @@ public class BookBaseReq {
     @NotEmpty
     private String isbn;
 
-    @NotEmpty
     private String title;
 
     private String subject;

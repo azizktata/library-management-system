@@ -1,27 +1,29 @@
 package com.example.librarybooks.core.bookItem.web;
 
-import com.example.librarybooks.core.book.web.BookView;
+import com.example.librarybooks.core.book.web.BookBaseReq;
 import com.example.librarybooks.core.enums.BookFormat;
-import com.example.librarybooks.core.enums.BookStatus;
+import org.springframework.lang.NonNull;
+import javax.validation.constraints.NotEmpty;
 
-import java.util.Date;
+public class BookItemBaseReq {
 
-public class BookItemView {
-
+    @NonNull
     private String barcode;
+    @NotEmpty
     private Long price;
     private String publicationDate;
-    private BookStatus status;
     private Boolean isReferenceOnly;
-    private String Borrowed;
+    @NotEmpty
     private BookFormat format;
-    private BookView bookInfo;
 
+    private BookBaseReq bookInfo;
+
+    @NonNull
     public String getBarcode() {
         return barcode;
     }
 
-    public void setBarcode(String barcode) {
+    public void setBarcode(@NonNull String barcode) {
         this.barcode = barcode;
     }
 
@@ -41,28 +43,12 @@ public class BookItemView {
         this.publicationDate = publicationDate;
     }
 
-    public BookStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(BookStatus status) {
-        this.status = status;
-    }
-
     public Boolean getReferenceOnly() {
         return isReferenceOnly;
     }
 
     public void setReferenceOnly(Boolean referenceOnly) {
         isReferenceOnly = referenceOnly;
-    }
-
-    public String getBorrowed() {
-        return Borrowed;
-    }
-
-    public void setBorrowed(String borrowed) {
-        Borrowed = borrowed;
     }
 
     public BookFormat getFormat() {
@@ -73,12 +59,11 @@ public class BookItemView {
         this.format = format;
     }
 
-
-    public BookView getBookInfo() {
+    public BookBaseReq getBookInfo() {
         return bookInfo;
     }
 
-    public void setBookInfo(BookView bookInfo) {
+    public void setBookInfo(BookBaseReq bookInfo) {
         this.bookInfo = bookInfo;
     }
 }

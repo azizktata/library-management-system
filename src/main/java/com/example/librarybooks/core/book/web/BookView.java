@@ -1,9 +1,11 @@
 package com.example.librarybooks.core.book.web;
 
+import com.example.librarybooks.core.author.Author;
 import com.example.librarybooks.core.author.web.AuthorView;
+import com.example.librarybooks.core.enums.BookFormat;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BookView {
@@ -20,8 +22,7 @@ public class BookView {
 
     private List<AuthorView> authors = new ArrayList<>();
 
-    public BookView() {
-    }
+    public BookView() {}
 
 
     public String getISBN() {

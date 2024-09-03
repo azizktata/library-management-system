@@ -5,9 +5,8 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Book {
+@MappedSuperclass
+public  class Book {
     @Id
     @Column(name = "isbn", nullable = false)
     private String isbn;
@@ -36,13 +35,7 @@ public class Book {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public String getSubject() {
         return subject;
@@ -74,5 +67,13 @@ public class Book {
 
     public void setWrittenBy(List<Author> writtenBy) {
         this.writtenBy = writtenBy;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

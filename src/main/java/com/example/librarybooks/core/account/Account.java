@@ -1,8 +1,12 @@
 package com.example.librarybooks.core.account;
 
+import com.example.librarybooks.core.bookItem.BookItem;
+import com.example.librarybooks.core.bookreservation.BookReservation;
 import com.example.librarybooks.core.librarian.Librarian;
 import com.example.librarybooks.core.member.Member;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -11,16 +15,18 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "account_id", nullable = false)
+    private Long accountId;
     private String password;
     private String name;
     private String email;
     private String phone;
 
-//    @OneToMany
-//    private List<BookItem> borrowedBooks;
+    @OneToMany
+    private List<BookItem> borrowedBooks;
 
+    @OneToMany
+    private List<BookReservation> reservedBooks;
 
     public Account() {
     }
@@ -35,13 +41,7 @@ public class Account {
         return "Unknown";
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getPassword() {
         return password;
@@ -73,5 +73,29 @@ public class Account {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
+    }
+
+    public List<BookItem> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    public void setBorrowedBooks(List<BookItem> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
+    }
+
+    public List<BookReservation> getReservedBooks() {
+        return reservedBooks;
+    }
+
+    public void setReservedBooks(List<BookReservation> reservedBooks) {
+        this.reservedBooks = reservedBooks;
     }
 }
