@@ -26,3 +26,14 @@ Here are the top use cases of the Library Management System:
 - Reserve book: To reserve a book which is not currently available.
 - Renew a book: To reborrow an already checked-out book.
 - Return a book: To return a book to the library which was issued to a member.
+
+#### Class Diagram
+Here are the main classes of our Library Management System:
+
+- Library: The central part of the organization for which this software has been designed. It has attributes like ‘Name’ to distinguish it from any other libraries and ‘Address’ to describe its location.
+- Book: The basic building block of the system. Every book will have ISBN, Title, Subject, Publishers, etc.
+- BookItem: Any book can have multiple copies, each copy will be considered a book item in our system. Each book item will have a unique barcode.
+- Account: We will have two types of accounts in the system, one will be a general member, and the other will be a librarian.
+- BookReservation: Responsible for managing reservations against book items.
+- BookLending: Manage the checking-out of book items.
+- Author: This class will encapsulate a book author.
