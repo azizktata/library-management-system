@@ -14,8 +14,9 @@ We will focus on the following set of requirements while designing the Library M
 
 #### Use Case Diagram
 We have 2 main actors in our system:
-Librarian: Mainly responsible for adding and modifying books, book items, and users. The Librarian can also issue, reserve, and return book items.
-Member: All members can search the catalog, as well as check-out, reserve, renew, and return a book.
+
+- Librarian: Mainly responsible for adding and modifying books, book items, and users. The Librarian can also issue, reserve, and return book items.
+- Member: All members can search the catalog, as well as check-out, reserve, renew, and return a book.
 
 Here are the top use cases of the Library Management System:
 - Add/Remove/Edit book: To add, remove or modify a book or book item.
