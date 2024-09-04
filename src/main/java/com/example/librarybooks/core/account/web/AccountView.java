@@ -1,5 +1,9 @@
 package com.example.librarybooks.core.account.web;
 
+import com.example.librarybooks.core.bookItem.web.BookItemView;
+
+import java.util.List;
+
 public class AccountView {
 
     private Long id;
@@ -8,6 +12,7 @@ public class AccountView {
     private String email;
     private String phone;
     private String dtype;
+
 
 
     public Long getId() {

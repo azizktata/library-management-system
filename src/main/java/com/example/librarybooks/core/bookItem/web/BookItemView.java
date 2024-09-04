@@ -13,7 +13,7 @@ public class BookItemView {
     private String publicationDate;
     private BookStatus status;
     private Boolean isReferenceOnly;
-    private String Borrowed;
+    private Date Borrowed;
     private BookFormat format;
     private BookView bookInfo;
 
@@ -57,11 +57,11 @@ public class BookItemView {
         isReferenceOnly = referenceOnly;
     }
 
-    public String getBorrowed() {
+    public Date getBorrowed() {
         return Borrowed;
     }
 
-    public void setBorrowed(String borrowed) {
+    public void setBorrowed(Date borrowed) {
         Borrowed = borrowed;
     }
 

@@ -1,6 +1,7 @@
 package com.example.librarybooks.core.account;
 
 import com.example.librarybooks.core.bookItem.BookItem;
+import com.example.librarybooks.core.booklending.LendedBook;
 import com.example.librarybooks.core.bookreservation.BookReservation;
 import com.example.librarybooks.core.librarian.Librarian;
 import com.example.librarybooks.core.member.Member;
@@ -21,12 +22,6 @@ public class Account {
     private String name;
     private String email;
     private String phone;
-
-    @OneToMany
-    private List<BookItem> borrowedBooks;
-
-    @OneToMany
-    private List<BookReservation> reservedBooks;
 
     public Account() {
     }
@@ -83,19 +78,4 @@ public class Account {
         this.accountId = accountId;
     }
 
-    public List<BookItem> getBorrowedBooks() {
-        return borrowedBooks;
-    }
-
-    public void setBorrowedBooks(List<BookItem> borrowedBooks) {
-        this.borrowedBooks = borrowedBooks;
-    }
-
-    public List<BookReservation> getReservedBooks() {
-        return reservedBooks;
-    }
-
-    public void setReservedBooks(List<BookReservation> reservedBooks) {
-        this.reservedBooks = reservedBooks;
-    }
 }

@@ -6,6 +6,8 @@ import com.example.librarybooks.core.enums.BookStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
+import java.util.Date;
+
 @Entity
 public class BookItem extends Book {
 
@@ -15,7 +17,7 @@ public class BookItem extends Book {
     private String publicationDate;
     private BookStatus status;
     private Boolean isReferenceOnly;
-    private String Borrowed;
+    private Date Borrowed;
     private BookFormat format;
 
     public BookItem() {
@@ -63,11 +65,11 @@ public class BookItem extends Book {
         isReferenceOnly = referenceOnly;
     }
 
-    public String getBorrowed() {
+    public Date getBorrowed() {
         return Borrowed;
     }
 
-    public void setBorrowed(String borrowed) {
+    public void setBorrowed(Date borrowed) {
         Borrowed = borrowed;
     }
 

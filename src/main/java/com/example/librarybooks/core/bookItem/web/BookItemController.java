@@ -3,6 +3,9 @@ package com.example.librarybooks.core.bookItem.web;
 import com.example.librarybooks.core.book.web.BookView;
 import com.example.librarybooks.core.bookItem.BookItem;
 import com.example.librarybooks.core.bookItem.BookItemService;
+import com.example.librarybooks.core.booklending.LendedBookId;
+import com.example.librarybooks.core.booklending.web.LendedBookView;
+import com.example.librarybooks.core.enums.BookStatus;
 import com.example.librarybooks.error.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +14,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -35,6 +39,10 @@ public class BookItemController {
     @GetMapping("/available")
     public List<BookItemView> getAllAvailableBookItems() {
         return service.findAllAvailableBookItems();
+    }
+    @GetMapping("/checkedout")
+    public List<BookItemView> getCheckedOutBookItems() {
+        return service.getCheckedOutBookItems();
     }
 
     @GetMapping("/book/{isbn}")
@@ -64,7 +72,7 @@ public class BookItemController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BookItemView createBookItem(@RequestBody BookItemBaseReq req) {
+    public BookItemView createBookItem(@Valid @RequestBody BookItemBaseReq req) {
         return service.create(req);
     }
 
@@ -72,6 +80,11 @@ public class BookItemController {
     public BookItemView updateBookItem(@PathVariable String barcode, @RequestBody BookItemBaseReq req) throws EntityNotFoundException {
         BookItem bookItem = service.findBookItemOrThrow(barcode);
         return service.update(bookItem, req);
+    }
+
+    @PutMapping("/{bookId}/status")
+    public BookItemView updateStatus(@PathVariable String bookId, @RequestParam("bookStatus") BookStatus bookStatus) throws EntityNotFoundException {
+        return service.updateStatus(bookId, bookStatus);
     }
 
     @DeleteMapping("/{barcode}")
