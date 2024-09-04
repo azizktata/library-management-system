@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/lendedbooks")
+@RequestMapping("/lended-books")
 public class LendedBookController {
     private final LendedBookService service;
 

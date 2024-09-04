@@ -66,10 +66,18 @@ public class ReservedBookService {
         ReservedBookId reservedBookId = new ReservedBookId(req.getAccountId(), req.getBookId());
         reservedBook.setReservedBookId(reservedBookId);
         reservedBook.setReservationDate(new Date());
+        bookItem.setStatus(BookStatus.Reserved);
         reservedBook.setBook(bookItem);
         reservedBook.setAccount(account);
         reservedBook.setStatus(ReservationStatus.Pending);
 
+        ReservedBook reservedBookSave = repo.save(reservedBook);
+        return reservedBookToViewConverter.convert(reservedBookSave);
+    }
+
+    public ReservedBookView updateReservationStatus(ReservedBookId id, ReservationStatus status) throws EntityNotFoundException {
+        ReservedBook reservedBook = findReservedBookOrThrow(id);
+        reservedBook.setStatus(status);
         ReservedBook reservedBookSave = repo.save(reservedBook);
         return reservedBookToViewConverter.convert(reservedBookSave);
     }
