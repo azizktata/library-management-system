@@ -6,8 +6,10 @@ import com.example.librarybooks.core.bookItem.BookItem;
 import com.example.librarybooks.core.enums.ReservationStatus;
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
-public class BookReservation {
+public class ReservedBook {
 
     @EmbeddedId
     private ReservedBookId reservedBookId;
@@ -22,11 +24,11 @@ public class BookReservation {
     @JoinColumn(name = "book_id")
     private BookItem book;
 
-    private String reservationDate;
+    private Date reservationDate;
 
     private ReservationStatus status;
 
-    public BookReservation() {
+    public ReservedBook() {
     }
 
     public ReservedBookId getReservedBookId() {
@@ -47,11 +49,11 @@ public class BookReservation {
 
 
 
-    public String getReservationDate() {
+    public Date getReservationDate() {
         return reservationDate;
     }
 
-    public void setReservationDate(String reservationDate) {
+    public void setReservationDate(Date reservationDate) {
         this.reservationDate = reservationDate;
     }
 

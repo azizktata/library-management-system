@@ -99,9 +99,15 @@ public class LendedBookService {
 
     public LendedBookView renewLoaning(LendedBookId lendedBookId, Date newDueDate) throws EntityNotFoundException {
         LendedBook lendedBook = findLendedBookOrThrow(lendedBookId);
+        Date currentDate = new Date();
+
+
         BookItem bookItem = lendedBook.getBook();
         if (bookItem.getStatus() != BookStatus.Loaned) {
             throw new EntityNotFoundException("Cannot renew loaning for a book that is not checked-out");
+        }
+        if (currentDate.before(lendedBook.getReturnDate())) {
+            throw new EntityNotFoundException("The book must be returned before renewing loaning");
         }
         lendedBook.setDueDate(newDueDate);
 

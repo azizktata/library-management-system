@@ -29,6 +29,9 @@ public class LendedBook {
 
     private Date returnDate;
 
+    @OneToOne
+    private Fine fine;
+
     public LendedBookId getLendedBookId() {
         return lendedBookId;
     }
@@ -77,5 +80,13 @@ public class LendedBook {
 
     public void setBook(BookItem book) {
         this.book = book;
+    }
+
+    public Fine getFine() {
+        return fine;
+    }
+
+    public void setFine(Fine fine) {
+        this.fine = fine;
     }
 }

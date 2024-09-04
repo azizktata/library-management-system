@@ -1,13 +1,8 @@
 package com.example.librarybooks.core.account;
 
-import com.example.librarybooks.core.bookItem.BookItem;
-import com.example.librarybooks.core.booklending.LendedBook;
-import com.example.librarybooks.core.bookreservation.BookReservation;
 import com.example.librarybooks.core.librarian.Librarian;
 import com.example.librarybooks.core.member.Member;
 import jakarta.persistence.*;
-
-import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
