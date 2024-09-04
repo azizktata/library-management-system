@@ -19,4 +19,6 @@ public interface BookItemRepo extends JpaRepository<BookItem, String> {
     //Page<Book> findByWrittenBy_Name(String authorName, Pageable pageable);
     @Query("SELECT b FROM BookItem b JOIN b.writtenBy a WHERE a.name = :authorName")
     List<BookItem> findBooksByAuthorName(String authorName);
+
+    Optional<BookItem> findByIsbn(String isbn);
 }

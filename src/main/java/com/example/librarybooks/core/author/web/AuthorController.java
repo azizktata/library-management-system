@@ -28,7 +28,7 @@ public class AuthorController {
     }
 
     @GetMapping
-    public Page<AuthorView> getAllAuthor(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+    public Page<AuthorView> getAllAuthor(@PageableDefault(sort = "name", direction = Sort.Direction.ASC) Pageable pageable){
         return service.findAllAuthors(pageable);
     }
 

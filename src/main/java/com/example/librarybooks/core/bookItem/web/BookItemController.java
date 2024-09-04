@@ -38,8 +38,8 @@ public class BookItemController {
     }
 
     @GetMapping("/book/{isbn}")
-    public List<BookItemView> getAllBookItemsOfBook(@PathVariable String isbn) {
-        return service.findAllBookItemsOfBook(isbn);
+    public BookItemView getBookItemByISBN(@PathVariable String isbn) throws EntityNotFoundException {
+        return service.getBookItemByISBN(isbn);
     }
 
     @GetMapping("/{barcode}")
@@ -58,7 +58,7 @@ public class BookItemController {
     }
 
     @GetMapping("/search/subject/{subject}")
-    public Page<BookItemView> searchBookBySubject(@PathVariable String subject, @PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+    public Page<BookItemView> searchBookBySubject(@PathVariable String subject, @PageableDefault(sort = "isbn", direction = Sort.Direction.ASC) Pageable pageable){
         return service.findBooksBySubject(subject, pageable);
     }
 

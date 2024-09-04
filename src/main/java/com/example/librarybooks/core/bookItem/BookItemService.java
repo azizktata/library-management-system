@@ -39,6 +39,12 @@ public class BookItemService {
         return bookItemToBookItemViewConverter.convert(bookItem);
     }
 
+    public BookItemView getBookItemByISBN(String isbn) throws EntityNotFoundException {
+        BookItem bookItem = repo.findByIsbn(isbn)
+                .orElseThrow(() -> new EntityNotFoundException("No such book item found!"));
+        return bookItemToBookItemViewConverter.convert(bookItem);
+    }
+
     public List<BookItemView> findAllBookItems() {
         List<BookItem> bookItems = repo.findAll();
         List<BookItemView> bookItemViews = new ArrayList<>();
@@ -59,17 +65,6 @@ public class BookItemService {
         //return new PageImpl<>(bookViews, pageable, books.getTotalElements());
     //}
 
-    public List<BookItemView> findAllBookItemsOfBook(String isbn) {
-        List<BookItem> bookItems = repo.findAll();
-        List<BookItemView> bookItemViews = new ArrayList<>();
-        bookItems.forEach(bookItem -> {
-            if (bookItem.getIsbn().equals(isbn)){
-                bookItemViews.add(bookItemToBookItemViewConverter.convert(bookItem));
-            }
-        });
-
-        return bookItemViews;
-    }
 
     public List<BookItemView> findAllAvailableBookItems() {
         List<BookItem> bookItems = repo.findAll();

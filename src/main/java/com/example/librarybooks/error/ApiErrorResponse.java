@@ -1,8 +1,9 @@
 package com.example.librarybooks.error;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ApiErrorResponse {
+public class ApiErrorResponse implements Serializable {
 
     private Integer status;
 
@@ -28,4 +29,43 @@ public class ApiErrorResponse {
         return new ApiErrorResponse(status, path, message, exception);
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getException() {
+        return exception;
+    }
+
+    public void setException(String exception) {
+        this.exception = exception;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
 }
